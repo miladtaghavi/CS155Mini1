@@ -1,0 +1,22 @@
+Trained on all of data
+
+pipe = make_pipeline(preprocessing.StandardScaler(), SVC())
+grid = GridSearchCV(pipe, cv=3, param_grid={"svc__C":[2.0, 4.0, 6.0], "svc__gamma":[0.0002, 0.0004, 0.0006]}, n_jobs=4, return_train_score=True, verbose=1)
+grid.fit(X_train, y_train)
+
+Best parameters set found on development set:
+
+{'svc__C': 4.0, 'svc__gamma': 0.0002}
+Best CV score:  0.85125
+
+Grid scores on development set:
+
+0.850 (+/-0.002) for {'svc__C': 2.0, 'svc__gamma': 0.0002}
+0.851 (+/-0.003) for {'svc__C': 2.0, 'svc__gamma': 0.0004}
+0.851 (+/-0.006) for {'svc__C': 2.0, 'svc__gamma': 0.0006}
+0.851 (+/-0.006) for {'svc__C': 4.0, 'svc__gamma': 0.0002}
+0.850 (+/-0.006) for {'svc__C': 4.0, 'svc__gamma': 0.0004}
+0.848 (+/-0.007) for {'svc__C': 4.0, 'svc__gamma': 0.0006}
+0.850 (+/-0.009) for {'svc__C': 6.0, 'svc__gamma': 0.0002}
+0.849 (+/-0.007) for {'svc__C': 6.0, 'svc__gamma': 0.0004}
+0.845 (+/-0.007) for {'svc__C': 6.0, 'svc__gamma': 0.0006}
