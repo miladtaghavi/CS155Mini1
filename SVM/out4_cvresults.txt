@@ -1,0 +1,37 @@
+Trained on all of data
+pipe = make_pipeline(preprocessing.StandardScaler(), SVC(kernel="poly"))
+grid = GridSearchCV(pipe, return_train_score=True, verbose=1,
+                    cv=3, 
+                    param_grid={"svc__C":[0.3, 1.0, 3.0],
+                                "svc__degree":[2, 3],
+                                "svc__gamma":[0.003, 0.01, 0.03]}, 
+                    n_jobs=4)
+
+Fitting 3 folds for each of 18 candidates, totalling 54 fits
+[Parallel(n_jobs=4)]: Done  42 tasks      | elapsed: 251.3min
+[Parallel(n_jobs=4)]: Done  54 out of  54 | elapsed: 328.1min finished
+Best parameters set found on development set:
+
+{'svc__C': 1.0, 'svc__degree': 2, 'svc__gamma': 0.003}
+Best CV score:  0.792
+
+Grid scores on development set:
+
+0.785 (+/-0.008) for {'svc__C': 0.3, 'svc__degree': 2, 'svc__gamma': 0.003}
+0.786 (+/-0.009) for {'svc__C': 0.3, 'svc__degree': 2, 'svc__gamma': 0.01}
+0.775 (+/-0.002) for {'svc__C': 0.3, 'svc__degree': 2, 'svc__gamma': 0.03}
+0.662 (+/-0.009) for {'svc__C': 0.3, 'svc__degree': 3, 'svc__gamma': 0.003}
+0.740 (+/-0.007) for {'svc__C': 0.3, 'svc__degree': 3, 'svc__gamma': 0.01}
+0.752 (+/-0.008) for {'svc__C': 0.3, 'svc__degree': 3, 'svc__gamma': 0.03}
+0.792 (+/-0.009) for {'svc__C': 1.0, 'svc__degree': 2, 'svc__gamma': 0.003}
+0.779 (+/-0.002) for {'svc__C': 1.0, 'svc__degree': 2, 'svc__gamma': 0.01}
+0.771 (+/-0.003) for {'svc__C': 1.0, 'svc__degree': 2, 'svc__gamma': 0.03}
+0.703 (+/-0.003) for {'svc__C': 1.0, 'svc__degree': 3, 'svc__gamma': 0.003}
+0.750 (+/-0.007) for {'svc__C': 1.0, 'svc__degree': 3, 'svc__gamma': 0.01}
+0.747 (+/-0.016) for {'svc__C': 1.0, 'svc__degree': 3, 'svc__gamma': 0.03}
+0.787 (+/-0.009) for {'svc__C': 3.0, 'svc__degree': 2, 'svc__gamma': 0.003}
+0.774 (+/-0.001) for {'svc__C': 3.0, 'svc__degree': 2, 'svc__gamma': 0.01}
+0.765 (+/-0.007) for {'svc__C': 3.0, 'svc__degree': 2, 'svc__gamma': 0.03}
+0.728 (+/-0.009) for {'svc__C': 3.0, 'svc__degree': 3, 'svc__gamma': 0.003}
+0.751 (+/-0.007) for {'svc__C': 3.0, 'svc__degree': 3, 'svc__gamma': 0.01}
+0.743 (+/-0.016) for {'svc__C': 3.0, 'svc__degree': 3, 'svc__gamma': 0.03}
