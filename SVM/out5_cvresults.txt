@@ -1,0 +1,32 @@
+pipe = make_pipeline(preprocessing.StandardScaler(), SVC(kernel="sigmoid"))
+grid = GridSearchCV(pipe, return_train_score=True, verbose=1,
+                    cv=4, 
+                    param_grid={"svc__C":[0.1, 0.3],
+                                "svc__gamma":[0.003, 0.01],
+                                "svc__coef0":[0.0001, 0.0003, 0.001]}, 
+                    n_jobs=4)
+# As a test just fit on 10% to check parameter values to use 
+grid.fit(X_train, y_train)
+grid_summary(grid)
+
+Fitting 4 folds for each of 12 candidates, totalling 48 fits
+[Parallel(n_jobs=4)]: Done  48 out of  48 | elapsed: 99.5min finished
+Best parameters set found on development set:
+
+{'svc__C': 0.1, 'svc__coef0': 0.0001, 'svc__gamma': 0.003}
+Best CV score:  0.84615
+
+Grid scores on development set:
+
+0.846 (+/-0.006) for {'svc__C': 0.1, 'svc__coef0': 0.0001, 'svc__gamma': 0.003}
+0.827 (+/-0.010) for {'svc__C': 0.1, 'svc__coef0': 0.0001, 'svc__gamma': 0.01}
+0.846 (+/-0.004) for {'svc__C': 0.1, 'svc__coef0': 0.0003, 'svc__gamma': 0.003}
+0.829 (+/-0.007) for {'svc__C': 0.1, 'svc__coef0': 0.0003, 'svc__gamma': 0.01}
+0.846 (+/-0.004) for {'svc__C': 0.1, 'svc__coef0': 0.001, 'svc__gamma': 0.003}
+0.827 (+/-0.011) for {'svc__C': 0.1, 'svc__coef0': 0.001, 'svc__gamma': 0.01}
+0.841 (+/-0.010) for {'svc__C': 0.3, 'svc__coef0': 0.0001, 'svc__gamma': 0.003}
+0.809 (+/-0.017) for {'svc__C': 0.3, 'svc__coef0': 0.0001, 'svc__gamma': 0.01}
+0.840 (+/-0.009) for {'svc__C': 0.3, 'svc__coef0': 0.0003, 'svc__gamma': 0.003}
+0.809 (+/-0.013) for {'svc__C': 0.3, 'svc__coef0': 0.0003, 'svc__gamma': 0.01}
+0.842 (+/-0.008) for {'svc__C': 0.3, 'svc__coef0': 0.001, 'svc__gamma': 0.003}
+0.808 (+/-0.014) for {'svc__C': 0.3, 'svc__coef0': 0.001, 'svc__gamma': 0.01}
