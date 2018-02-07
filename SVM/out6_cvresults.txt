@@ -1,0 +1,47 @@
+## Max depth 1
+
+pipe = make_pipeline(preprocessing.StandardScaler(), 
+                     AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=1), learning_rate=1))
+
+grid = GridSearchCV(pipe, param_grid={"adaboostclassifier__n_estimators":[100, 300, 1000]},
+                    n_jobs=4, cv=4, verbose=10)
+
+grid.fit(X_train, y_train)
+grid_summary(grid)
+
+Best parameters set found on development set:
+
+{'adaboostclassifier__n_estimators': 300}
+Best CV score:  0.83055
+
+Grid scores on development set:
+
+0.816 (+/-0.012) for {'adaboostclassifier__n_estimators': 100}
+0.831 (+/-0.009) for {'adaboostclassifier__n_estimators': 300}
+0.830 (+/-0.013) for {'adaboostclassifier__n_estimators': 1000}
+
+----------
+
+## Max depth 2
+
+pipe = make_pipeline(preprocessing.StandardScaler(),
+                     AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=2), 
+                                        learning_rate=1))
+
+grid = GridSearchCV(pipe, param_grid={"adaboostclassifier__n_estimators":[1, 10, 30, 100, 300, 1000]}, n_jobs=4, cv=4, verbose=10)
+grid.fit(X_train, y_train)
+grid_summary(grid)
+
+Best parameters set found on development set:
+
+{'adaboostclassifier__n_estimators': 300}
+Best CV score:  0.8247
+
+Grid scores on development set:
+
+0.604 (+/-0.008) for {'adaboostclassifier__n_estimators': 1}
+0.741 (+/-0.024) for {'adaboostclassifier__n_estimators': 10}
+0.797 (+/-0.006) for {'adaboostclassifier__n_estimators': 30}
+0.822 (+/-0.015) for {'adaboostclassifier__n_estimators': 100}
+0.825 (+/-0.011) for {'adaboostclassifier__n_estimators': 300}
+0.808 (+/-0.008) for {'adaboostclassifier__n_estimators': 1000}

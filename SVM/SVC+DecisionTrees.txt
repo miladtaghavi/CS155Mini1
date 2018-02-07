@@ -1,0 +1,44 @@
+take svc -> take errors and pass to adaboost?
+PCA, clustering(?)
+adaboost, random forests, gradient boosted
+
+20% data @ 3 fold CV
+------------
+SVC only (with norm, with PCA)
+0.7977505995689328
+
+SVC only (with norm, no PCA)
+0.7985020992879405
+
+SVC only (no norm,  with PCA)
+0.7384975929139705
+
+SVC only (no norm, no PCA)
+0.7492487814607326
+
+SVC+2depth adaboost
+100 - 0.728
+50 - 0.7414
+25 - 0.7412
+0 - 0.7977
+
+no SVC+2depth adaboost
+250 - 0.7553
+100 - 0.7517
+50 - 0.7362
+25 - 0.7217
+
+SVC+2depth adaboost+no norm
+50 - 0.625
+100 - 0.636
+250 - 0.6322
+
+SVC+2depth adaboost+no PCA
+50 - 0.7732
+100 - 
+250 - 0.7550
+
+
+--------------
+no SVC, no PCA, with norm - Adaboost Depth 1
+100 - 0.782
