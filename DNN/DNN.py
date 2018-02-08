@@ -87,7 +87,7 @@ def writeResults(ypred):
     f.close()
 
     # Specify number of Neural networks to train
-N_models = 50
+N_models = 150
 Predictions = []
 
 # Define the DNN model
