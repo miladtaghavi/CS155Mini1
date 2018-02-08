@@ -31,6 +31,7 @@ y_uall = utrain_data[:,0]
 
 # One hot encode categories
 y_tall = keras.utils.np_utils.to_categorical(y_tall)
+y_uall = keras.utils.np_utils.to_categorical(y_uall)
 
 # Function to generate DNN of given depth and width
 def getModel(layers,Pdrop):
