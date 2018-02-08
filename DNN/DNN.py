@@ -96,7 +96,7 @@ for i in range(0,N_models):
     model = getModel([500,250,125],0.4)
     # Compile it and fit
     model.compile(loss='categorical_crossentropy',optimizer='RMSprop', metrics=['accuracy'])
-    model.fit(x_uall, y_uall, batch_size=2**8, epochs=2)
+    model.fit(x_uall, y_uall, batch_size=2**8, epochs=2,validation_data=(Xval, Yval))
     # Use weakly trained model to predict and store predictions
     ypred = model.predict(FV_data,batch_size=2**8)
     Predictions.append(ypred)
